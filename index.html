@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+  <script src="https://kit.fontawesome.com/11fc53aed0.js" crossorigin="anonymous"></script>
+  <title>Tic Tac Toe</title>
+</head>
+<body>
+  <div class="game blurry">
+    <header>
+      <h1>TIC-TAC-TOE</h1>
+    </header>
+    <div class="left-container hidden">
+      <p id="player-1-name"></p>
+      <i class="fa-solid fa-person fa-10x"></i>
+      <p id="player-1-win" class="end">Wins!</p>
+    </div>
+    <main>
+      <div class="turn-container hidden">
+        <h2 id="turn-message"></h2>
+      </div>
+      <div class="board" id="board">
+      </div>
+      <div class="button-container">
+        <button id="play-again">Play Again</button>
+      </div>
+    </main>
+    <div class="right-container hidden">
+      <p id="player-2-name"></p>
+      <i class="fa-solid fa-person fa-10x"></i>
+      <p id="player-2-win" class="end">Wins!</p>
+    </div>
+  </div>
+
+  <!-- GAME MODE MODAL STARTS HERE -->
+  <div class="mode-modal" id="mode-modal">
+    <div class="mode-modal-body">
+      <div class="first-mode" id="first-mode">
+        <div class="player-left">
+          <i class="fa-solid fa-user fa-3x"></i>
+          <input type="text" id="player-1-pve" placeholder="Player 1">
+        </div>
+        <div class="versus">
+          <img src="assets/versus.png" alt="VS">
+        </div>
+        <div class="player-right">
+          <i class="fa-solid fa-computer fa-3x"></i>
+          <input type="text" placeholder="Computer" id="input-computer">
+        </div>
+      </div>
+      <div class="second-mode" id="second-mode">
+        <div class="player-left">
+          <i class="fa-solid fa-user fa-3x"></i>
+          <input type="text" id="player-1-pvp" placeholder="Player 1">
+        </div>
+        <div class="versus">
+          <img src="assets/versus.png" alt="VS">
+        </div>
+        <div class="player-right">
+          <i class="fa-solid fa-user fa-3x"></i>
+          <input type="text" id="player-2-pvp" placeholder="Player 2">
+        </div>
+      </div>
+    </div>
+    <div class="start-button-container">
+      <button id="start-button" class="hidden">START</button>
+    </div>
+  </div>
+<script src="app.js"></script>
+</body>
+</html>
+
+<!-- style="visibility: hidden" -->
