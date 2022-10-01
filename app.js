@@ -222,10 +222,16 @@ function handleClick(e) {
 
   // Switch Turns
   swapTurns();
-  if(activeMode === 'pve' && circleTurn) {
-    aiTurn();
-  }
+
+
   setMessage(circleTurn);
+    //AI TURN
+    if(activeMode === 'pve' && circleTurn) {
+    setTimeout(() => {
+      aiTurn();
+    }, "2000");
+    }
+    //AI TURN
   setBoardHoverClass();
 
   // console.log(document.querySelectorAll('.cell:not(.x):not(.circle)'));
