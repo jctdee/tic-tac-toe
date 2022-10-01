@@ -226,6 +226,7 @@ function handleClick(e) {
 
   setMessage(circleTurn);
     //AI TURN
+    disableUserInput();
     if(activeMode === 'pve' && circleTurn) {
     setTimeout(() => {
       aiTurn();
@@ -317,17 +318,10 @@ function aiTurn() {
   aiOptions.forEach(opt => {
     aiChoices.push(opt.dataset.index);
   })
-  // console.log(`aiOptions: ${aiOptions}`);
+
   const aiPick = randomizer(aiChoices.length);
-  // console.log(`aiPick: ${aiPick}`);
   handleClick(aiOptions[aiPick]);
-  // aiOptions.forEach(opt => {
-  //   console.log(opt);
-  //   if(opt.dataset.index == aiPick) {
-  //     handleClick(opt);
-  //   }
-  // })
-  // console.log(aiOptions[0].dataset.index);
+  enableUserInput();
 
   function randomizer(length) {
     return Math.floor(Math.random() * length);
@@ -356,4 +350,14 @@ playAgainButton.addEventListener('click', () => {
 
 function checkDraw() {
   return gameBoard.getBoardElements().every(elem => elem !== '');
+}
+
+function disableUserInput() {
+  board.classList.remove('x');
+  board.classList.remove('circle');
+  board.classList.add('disabled-hover');
+}
+
+function enableUserInput() {
+  board.classList.remove('disabled-hover');
 }
