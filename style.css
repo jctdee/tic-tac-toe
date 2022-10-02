@@ -200,6 +200,14 @@ header > h1 {
 
 #play-again {
   display: none;
+  padding: 5px 25px;
+  font-size: 1.4rem;
+  font-family: 'Permanent Marker';
+  border-radius: 8px;
+}
+
+#play-again:hover {
+  cursor: pointer;
 }
 
 /* MODE MODAL HERE */
@@ -289,9 +297,7 @@ img {
   font-size: 1.4rem;
   font-family: 'Permanent Marker';
   border-radius: 8px;
-
 }
-
 
 #start-button:hover {
   cursor: pointer;
@@ -307,4 +313,9 @@ img {
 
 .end {
   visibility: hidden;
+}
+
+.left-container > p, .right-container > p {
+  font-size: 2rem;
+  font-weight: 500;
 }

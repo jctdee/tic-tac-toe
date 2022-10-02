@@ -23,6 +23,7 @@ const playAgainButton = document.getElementById('play-again');
 const firstMode = document.getElementById('first-mode');
 const secondMode = document.getElementById('second-mode');
 const startButton = document.getElementById('start-button');
+const playerTwoAvatar = document.getElementById('player-2-name');
 
 const board = document.getElementById('board');
 const boardClone = board.cloneNode(true);
@@ -161,10 +162,20 @@ function startGame() {
       handleClick(e.target);
     }
   });
+  setAvatar();
   setMessage(false);
   setBoardHoverClass();
 }
 
+function setAvatar() {
+  const avatar = document.createElement('i');
+  if(activeMode === 'pve') {
+    avatar.classList.add('fa-solid', 'fa-robot', 'fa-10x');
+  } else {
+    avatar.classList.add('fa-solid', 'fa-person' ,'fa-10x');
+  }
+  playerTwoAvatar.parentNode.insertBefore(avatar, playerTwoAvatar.nextSibling);
+}
 
 function setMode(mode) {
   // DOM doesnt get default value of placeholder
@@ -197,6 +208,7 @@ function handleClick(e) {
   // const ind = e.target.dataset.index;
   const ind = e.dataset.index;
   const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
+  const timer = "0";
   // Place Mark
   placeMark(cell, currentClass);
   // gameBoard.setField(e.target.dataset.index, currentClass);
@@ -225,14 +237,21 @@ function handleClick(e) {
 
 
   setMessage(circleTurn);
-    //AI TURN
-    disableUserInput();
-    if(activeMode === 'pve' && circleTurn) {
-    setTimeout(() => {
-      aiTurn();
-    }, "2000");
-    }
-    //AI TURN
+
+  //AI TURN
+  disableUserInput();
+  if(activeMode === 'pve' && circleTurn) {
+    timer = "2000";
+  setTimeout(() => {
+    aiTurn();
+  }, "2000");
+  }
+  //AI TURN
+
+  setTimeout(() => {
+    enableUserInput();
+  }, timer);
+
   setBoardHoverClass();
 
   // console.log(document.querySelectorAll('.cell:not(.x):not(.circle)'));
@@ -321,7 +340,6 @@ function aiTurn() {
 
   const aiPick = randomizer(aiChoices.length);
   handleClick(aiOptions[aiPick]);
-  enableUserInput();
 
   function randomizer(length) {
     return Math.floor(Math.random() * length);
