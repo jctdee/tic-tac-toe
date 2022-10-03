@@ -208,7 +208,7 @@ function handleClick(e) {
   // const ind = e.target.dataset.index;
   const ind = e.dataset.index;
   const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
-  const timer = "0";
+  let timer = "0";
   // Place Mark
   placeMark(cell, currentClass);
   // gameBoard.setField(e.target.dataset.index, currentClass);
